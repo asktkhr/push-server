@@ -1,4 +1,6 @@
 PushServer::Application.routes.draw do
+  post "websocket/send"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
