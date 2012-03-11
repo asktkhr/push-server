@@ -10,7 +10,7 @@ group :production, :staging do
   gem 'pg'
 end
 
-group :production, :staging do
+group :development do
   gem 'sqlite3'
 end
 # Gems used only for assets and not required
