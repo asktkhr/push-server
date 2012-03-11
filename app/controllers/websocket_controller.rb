@@ -1,4 +1,4 @@
 class WebsocketController < ApplicationController
-  def send
+  def send_url
   end
 end
