@@ -30,8 +30,8 @@ class Message
 
   def send_url_by_websocket url, receiver, socket_id
     data = {}
-    data{:url] = url
-    data{:receivers] = receivers
+    data[:url] = url
+    data[:receivers] = receivers
 
     begin
       Pusher['chrome2chrome'].trigger('open_url', data.to_json, socket_id)
