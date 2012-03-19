@@ -10,27 +10,36 @@ class Message
     else
       data[:receivers] = params[:receivers].split(",")
     end
-    c2dm_receiver = ""
+    c2dm_receivers = []
     websocket_receivers = []
 
     data[:receivers].each do |value|
       receiver = Device.find_by_name value
       unless receiver.registration_id.blank?
-        c2dm_receiver = receiver.registration_id
+        c2dm_receivers.push receiver.registration_id
       else
         websocket_receivers.push receiver.name
       end
     end
 
+    unless c2dm_receivers.blank?
+      send_url_by_c2dm data[:url], c2dm_receivers
+    end
+
     unless websocket_receivers.blank?
       send_url_by_websocket data[:url], websocket_receivers, params[:socket_id]
     end
-    
-    unless c2dm_receiver.blank?
-      send_url_by_c2dm data[:url], c2dm_receiver
-    end
   end
 
+  def send_url_by_c2dm url, receivers
+    email = "mail@gmail.com"
+    password = "pass"
+    C2DM.authenticate!(email, password, "com.porunga.phone2phone")
+    c2dm = C2DM.new
+    receivers.each do | registration_id |
+      c2dm.send_notification ({ :registration_id => registration_id, :data => { :message => url }, :collapse_ket => "biteme" })
+    end
+  end
 
   def send_url_by_websocket url, receivers, socket_id
     data = {}
@@ -44,12 +53,4 @@ class Message
     end
   end
 
-  def send_url_by_c2dm url, registration_id
-    email = "pj.porunga@gmail.com"
-    password = "xenlon2011"
-    C2DM.authenticate!(email, password, "com.porunga.phone2phone")
-    c2dm = C2DM.new
-    notification = { :registration_id => registration_id, :data => { :message => url }, :collapse_ket => "biteme" }
-    c2dm.send_notification(notification)
-  end
 end
