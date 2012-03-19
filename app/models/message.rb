@@ -11,10 +11,10 @@ class Message
 
     data[:receivers].each do |value|
       receiver = Device.find_by_name value
-      if receiver.registration_id.blank?
+      unless receiver.registration_id.blank?
         c2dm_receiver = receiver.registration_id
       else
-        websocket_receivers.push receiver
+        websocket_receivers.push receiver.name
       end
     end
 
@@ -28,12 +28,10 @@ class Message
   end
 
 
-  def send_url_by_websocket url, receiver, socket_id
+  def send_url_by_websocket url, receivers, socket_id
     data = {}
     data[:url] = url
     data[:receivers] = receivers
-    p 'data'
-    p data.to_json
 
     begin
       Pusher['chrome2chrome'].trigger('open_url', data.to_json, socket_id)
