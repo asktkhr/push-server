@@ -1,4 +1,12 @@
 PushServer::Application.routes.draw do
+  post "message/send_message"
+
+  post "message/register"
+
+  get "message/register_info"
+
+  get "message/receivers"
+
   get "websocket/register_info"
   get "websocket/receivers"
 
