@@ -1,4 +1,6 @@
 PushServer::Application.routes.draw do
+  get "websocket/register_info"
+  post "websocket/register"
   post "websocket/send_url"
 
   # The priority is based upon order of creation:
