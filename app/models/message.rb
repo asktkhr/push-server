@@ -27,7 +27,7 @@ class Message
     end
     
     unless c2dm_receiver.blank?
-      send_url_by_c2dm data[:url], websocket_receiver
+      send_url_by_c2dm data[:url], c2dm_receiver
     end
   end
 
