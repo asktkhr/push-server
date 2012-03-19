@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20120313151929) do
 
   create_table "devices", :force => true do |t|
     t.string   "name"
-    t.string   "extension_id"
+    t.string   "registration_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end

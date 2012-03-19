@@ -46,3 +46,4 @@ group :development, :test do
 end
 
 gem 'pusher'
+gem 'c2dm'

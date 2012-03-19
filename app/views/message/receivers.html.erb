@@ -1,2 +1,9 @@
-<h1>Message#receivers</h1>
-<p>Find me in app/views/message/receivers.html.erb</p>
+<% unless @devices.blank? %>
+  [registerd devices]</br>
+  <% @devices.each_with_index do |device, i| %>
+    <%= check_box_tag "receiver_#{i}", device.name%>
+    <label for="hoge"><%= device.name %></label>
+    </br>
+  <% end %>
+<% end %>
+</br>
