@@ -23,7 +23,7 @@ class WebsocketController < ApplicationController
   end
 
   def receivers
-    @devices = Device.where("extension_id <> ?", request.env["HTTP_ORIGIN"])
+    @devices = Device.where("name <> ?", params[:name])
     render :layout => false, :status => :ok
   end
 end
