@@ -1,7 +1,7 @@
 <% unless @devices.blank? %>
   [registerd devices]</br>
-  <% @devices.each do |device| %>
-    <%= check_box_tag :receiver, device.extension_id %>
+  <% @devices.each_with_index do |device, i| %>
+    <%= check_box_tag "receiver_#{i}", device.name%>
     <label for="hoge"><%= device.name %></label>
     </br>
   <% end %>

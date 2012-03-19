@@ -10,7 +10,6 @@ class WebsocketController < ApplicationController
   def register
     device = Device.new
     device.name = params[:name]
-    device.extension_id = request.env["HTTP_ORIGIN"]
     if device.save 
       render :text => 'success', :status => :created
     else
@@ -19,7 +18,7 @@ class WebsocketController < ApplicationController
   end
 
   def register_info
-    device = Device.find_by_extension_id(request.env["HTTP_ORIGIN"])
+    device = Device.find_by_name(params[:name])
     render :json => device, :status => :ok
   end
 
