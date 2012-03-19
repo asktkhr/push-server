@@ -24,7 +24,7 @@ class WebsocketController < ApplicationController
   end
 
   def receivers
-    devices = Device.where("extension_id <> ?",request.env["HTTP_ORIGIN"])
-    render :json => devices, :status => :ok
+    @devices = Device.where("extension_id <> ?", request.env["HTTP_ORIGIN"])
+    render :layout => false, :status => :ok
   end
 end

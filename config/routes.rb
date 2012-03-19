@@ -1,5 +1,7 @@
 PushServer::Application.routes.draw do
   get "websocket/register_info"
+  get "websocket/receivers"
+
   post "websocket/register"
   post "websocket/send_url"
 

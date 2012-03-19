@@ -1,0 +1,9 @@
+<% unless @devices.blank? %>
+  [registerd devices]</br>
+  <% @devices.each do |device| %>
+    <%= check_box_tag :receiver, device.extension_id %>
+    <label for="hoge"><%= device.name %></label>
+    </br>
+  <% end %>
+<% end %>
+</br>
