@@ -47,7 +47,8 @@ class Message
   def send_url_by_c2dm url, registration_id
     email = "pj.porunga@gmail.com"
     password = "xenlon2011"
-    c2dm = C2DM.new(email, password, "com.porunga.phone2phone")
+    C2DM.authenticate!(email, password, "com.porunga.phone2phone")
+    c2dm = C2DM.new
     notification = { :registration_id => registration_id, :data => { :message => url }, :collapse_ket => "biteme" }
     c2dm.send_notification(notification)
   end
