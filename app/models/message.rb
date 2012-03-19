@@ -5,7 +5,11 @@ class Message
   def send_message params
     data = {}
     data[:url] = params[:url]
-    data[:receivers] = params[:receivers]
+    if params[:receivers].class.eql?(Array)
+      data[:receivers] = params[:receivers]
+    else
+      data[:receivers] = params[:receivers].split(",")
+    end
     c2dm_receiver = ""
     websocket_receivers = []
 
