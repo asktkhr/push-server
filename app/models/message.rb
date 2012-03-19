@@ -32,6 +32,8 @@ class Message
     data = {}
     data[:url] = url
     data[:receivers] = receivers
+    p 'data'
+    p data.to_json
 
     begin
       Pusher['chrome2chrome'].trigger('open_url', data.to_json, socket_id)
