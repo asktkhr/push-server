@@ -13,8 +13,8 @@ class Message
     c2dm_receivers = []
     websocket_receivers = []
 
-    data[:receivers].each do |value|
-      receiver = Device.find_by_name value
+    receivers = Device.find_all_by_name data[:receivers]
+    receivers.each do |receiver|
       unless receiver.registration_id.blank?
         c2dm_receivers.push receiver.registration_id
       else
