@@ -4,7 +4,7 @@ class MessageController < ApplicationController
   require 'uri'
   require 'json'
 
-  protect_from_forgery :except => [:send_url, :register, :register_info]
+  protect_from_forgery :except => [:register, :register_info, :delete]
 
   def register
     device = Device.new
