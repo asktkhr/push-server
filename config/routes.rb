@@ -9,12 +9,6 @@ PushServer::Application.routes.draw do
 
   delete "devices/delete"
 
-  get "websocket/register_info"
-  get "websocket/receivers"
-
-  post "websocket/register"
-  post "websocket/send_url"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
