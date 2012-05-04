@@ -31,6 +31,10 @@ class DevicesController < ApplicationController
   end
 
   def delete
-    Device.find_by_name(params[:name]).delete
+    if Device.find_by_name(params[:name]).delete
+      render :text => 'success', :status => :created
+    else
+      render :text => 'error', :status => :bad_request
+    end
   end
 end
