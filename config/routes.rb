@@ -7,6 +7,8 @@ PushServer::Application.routes.draw do
 
   get "devices/receivers"
 
+  delete "devices/delete"
+
   get "websocket/register_info"
   get "websocket/receivers"
 
