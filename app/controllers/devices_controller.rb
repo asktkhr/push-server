@@ -1,4 +1,4 @@
-class MessageController < ApplicationController
+class DevicesController < ApplicationController
   require 'c2dm'
   require 'net/https'
   require 'uri'
