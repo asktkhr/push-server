@@ -13,8 +13,8 @@ class Message
     c2dm_receivers = []
     websocket_receivers = []
 
-    data[:receivers].each do |value|
-      receiver = Device.find_by_name value
+    receivers = Device.find_all_by_name data[:receivers]
+    receivers.each do |receiver|
       unless receiver.registration_id.blank?
         c2dm_receivers.push receiver.registration_id
       else
@@ -32,8 +32,8 @@ class Message
   end
 
   def send_url_by_c2dm url, receivers
-    email = "mail@gmail.com"
-    password = "pass"
+    email = "pj.porunga@gmail.com"
+    password = "xenlon2011"
     C2DM.authenticate!(email, password, "com.porunga.phone2phone")
     c2dm = C2DM.new
     receivers.each do | registration_id |
