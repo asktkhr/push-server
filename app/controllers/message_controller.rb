@@ -1,5 +1,5 @@
 class MessageController < ApplicationController
-  protect_from_forgery :except => [:send_url, :register, :register_info]
+  protect_from_forgery :except => [:send_message]
 
   def send_message
     Message.new.send_message params
