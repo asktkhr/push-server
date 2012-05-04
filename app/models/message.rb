@@ -32,8 +32,8 @@ class Message
   end
 
   def send_url_by_c2dm url, receivers
-    email = "pj.porunga@gmail.com"
-    password = "xenlon2011"
+    email = "email@gmail.com"
+    password = "pass"
     C2DM.authenticate!(email, password, "com.porunga.phone2phone")
     c2dm = C2DM.new
     receivers.each do | registration_id |
